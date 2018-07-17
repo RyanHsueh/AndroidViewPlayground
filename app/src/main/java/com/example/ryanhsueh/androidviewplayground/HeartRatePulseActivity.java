@@ -34,14 +34,14 @@ public class HeartRatePulseActivity extends AppCompatActivity {
         findViewById(R.id.btn_pulse).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startPulse();
+                startPulse1();
             }
         });
 
         findViewById(R.id.btn_stop).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stopPulse();
+                stopPulse1();
             }
         });
 
@@ -50,17 +50,17 @@ public class HeartRatePulseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        stopPulse();
+        stopPulse1();
     }
 
-    private void startPulse() {
+    private void startPulse1() {
         if (mThread == null) {
-            mThread = new Thread(mPulseRunnable, "Pulse Thread");
+            mThread = new Thread(mRunnable1, "Pulse Thread");
+            mThread.start();
         }
-        mThread.start();
     }
 
-    private void stopPulse() {
+    private void stopPulse1() {
         if (mThread != null) {
             mThread.interrupt();
             mThread = null;
@@ -71,6 +71,29 @@ public class HeartRatePulseActivity extends AppCompatActivity {
         mTextHR.setText(String.valueOf(0));
         mPulseView.stopPulse();
     }
+
+
+    private void startPulse2() {
+        if (mRunnable2 == null) {
+            mRunnable2 = new PulseRunnable2(mHandler);
+            mThread = new Thread(mRunnable2, "Pulse Thread");
+            mThread.start();
+        }
+    }
+
+    private void stopPulse2() {
+        if (mRunnable2 != null) {
+            mRunnable2.cancel();
+            mRunnable2 = null;
+            mThread = null;
+        }
+
+        mHandler.removeMessages(MSG_UPDATE_HR);
+
+        mTextHR.setText(String.valueOf(0));
+        mPulseView.stopPulse();
+    }
+
 
     private class PulseHandler extends Handler {
 
@@ -85,36 +108,88 @@ public class HeartRatePulseActivity extends AppCompatActivity {
             }
         }
 
-    };
+    }
 
-    private Runnable mPulseRunnable = new Runnable() {
+    // Interrupt thread 1 : Thread.interrupt
+    private PulseRunnable1 mRunnable1 = new PulseRunnable1(mHandler);
+    private static class PulseRunnable1 extends PulseRunnable {
+
+        PulseRunnable1(Handler handler) {
+            super(handler);
+        }
 
         @Override
         public void run() {
             while (!Thread.currentThread().isInterrupted()) {
 
-                Random random = new Random();
-                int hr = random.nextInt(180);
+                updateHR();
 
-                Message msg = new Message();
-                msg.what = MSG_UPDATE_HR;
-                msg.arg1 = hr;
-                mHandler.sendMessage(msg);
+                Log.d(TAG, "run: PulseRunnable 1 is running");
 
-                Log.d(TAG, "run: PulseRunnable is running");
-
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    // interrupt it !!
-                    Thread.currentThread().interrupt();
-                }
+                sleep(1000);
             }
 
-            Log.d(TAG, "run: PulseRunnable is canceled");
+            Log.d(TAG, "run: PulseRunnable 1 is canceled");
         }
 
     };
+
+
+    // Interrupt thread 2 : volatile boolean
+    private PulseRunnable2 mRunnable2;
+    private static class PulseRunnable2 extends PulseRunnable {
+
+        private volatile boolean isCancel;
+
+        PulseRunnable2(Handler handler) {
+            super(handler);
+        }
+
+        @Override
+        public void run() {
+            while (!isCancel) {
+                updateHR();
+
+                Log.d(TAG, "run: PulseRunnable 2 is running");
+
+                sleep(1000);
+            }
+
+            Log.d(TAG, "run: PulseRunnable 2 is canceled");
+        }
+
+        void cancel() {
+            isCancel = true;
+        }
+
+    }
+
+    private abstract static class PulseRunnable implements Runnable {
+        private Handler handler;
+
+        PulseRunnable(Handler handler) {
+            this.handler = handler;
+        }
+
+        protected void updateHR() {
+            Random random = new Random();
+            int hr = random.nextInt(180);
+
+            Message msg = new Message();
+            msg.what = MSG_UPDATE_HR;
+            msg.arg1 = hr;
+            handler.sendMessage(msg);
+        }
+
+        protected void sleep(long millis) {
+            try {
+                Thread.sleep(millis);
+            } catch (InterruptedException e) {
+                // interrupt it !!
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
 
 
 }
