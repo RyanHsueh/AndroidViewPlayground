@@ -9,4 +9,9 @@
         <attr name="title_text_color" format="color"/>
         <attr name="title_text" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="HeartRatePulseView">
+        <attr name="themeColor" format="color"/>
+    </declare-styleable>
+
 </resources>

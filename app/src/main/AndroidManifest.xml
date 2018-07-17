@@ -19,7 +19,8 @@
         <activity android:name=".SlideViewActivity" />
         <activity android:name=".RectViewActivity" />
         <activity android:name=".TitleBarActivity" />
-        <activity android:name=".ViewGroupActivity"></activity>
+        <activity android:name=".ViewGroupActivity" />
+        <activity android:name=".HeartRatePulseActivity"></activity>
     </application>
 
 </manifest>

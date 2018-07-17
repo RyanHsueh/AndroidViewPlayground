@@ -29,5 +29,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ViewGroupActivity.class);
         startActivity(intent);
     }
+    public void startHeartRatePulseActivity(View view) {
+        Intent intent = new Intent(this, HeartRatePulseActivity.class);
+        startActivity(intent);
+    }
 
 }
