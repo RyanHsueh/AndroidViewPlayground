@@ -10,8 +10,12 @@ import android.widget.TextView;
 
 import com.example.ryanhsueh.androidviewplayground.customView.HeartRatePulseView;
 
+import java.lang.ref.WeakReference;
 import java.util.Random;
 
+/**
+ * Created by ryanhsueh on 2018/7/17
+ */
 public class HeartRatePulseActivity extends AppCompatActivity {
     private static final String TAG = HeartRatePulseActivity.class.getSimpleName();
 
@@ -20,7 +24,7 @@ public class HeartRatePulseActivity extends AppCompatActivity {
     private TextView mTextHR;
     private HeartRatePulseView mPulseView;
 
-    private PulseHandler mHandler = new PulseHandler();
+    private PulseHandler mHandler = new PulseHandler(this);
     private Thread mThread;
 
     @Override
@@ -94,21 +98,32 @@ public class HeartRatePulseActivity extends AppCompatActivity {
         mPulseView.stopPulse();
     }
 
+    public void updateHR(int hr) {
+        mTextHR.setText(String.valueOf(hr));
+        mPulseView.startPulse(hr);
+    }
 
-    private class PulseHandler extends Handler {
+
+    // Using static inner class and WeakReference to prevent memory leak
+    private static class PulseHandler extends Handler {
+        private WeakReference<HeartRatePulseActivity> activityReference;
+
+        PulseHandler(HeartRatePulseActivity activity) {
+            activityReference = new WeakReference<>(activity);
+        }
 
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_UPDATE_HR:
                     int hr = msg.arg1;
-                    mTextHR.setText(String.valueOf(hr));
-                    mPulseView.startPulse(hr);
+                    activityReference.get().updateHR(hr);
                     break;
             }
         }
 
     }
+
 
     // Interrupt thread 1 : Thread.interrupt
     private PulseRunnable1 mRunnable1 = new PulseRunnable1(mHandler);
