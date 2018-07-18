@@ -15,6 +15,8 @@ import android.util.AttributeSet;
 
 import com.example.ryanhsueh.androidviewplayground.R;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by ryanhsueh on 2018/7/17
  */
@@ -93,10 +95,10 @@ public class HeartRatePulseView extends ViewBase {
     private Paint mPaintBase;
     private Paint mPaintLinePath;
 
-    private int mThemeColor = Color.RED;
+    private int mThemeColor;
 
-    private int mIndexShowing = 1;
-    private int mIndexHiding = 1;
+    int mIndexShowing = 1;
+    int mIndexHiding = 1;
 
     private float[] mPulseMatrix = new float[HR_PULSE_PATTERNS.length];
     private boolean mIsAnimationDrawing = false;
@@ -301,21 +303,30 @@ public class HeartRatePulseView extends ViewBase {
         super.onDraw(canvas);
     }
 
-    private Handler mHandler = new Handler() {
+    private DrawHandler mHandler = new DrawHandler(this);
+    private static class DrawHandler extends Handler {
+
+        WeakReference<HeartRatePulseView> pulseView;
+
+        DrawHandler(HeartRatePulseView view) {
+            this.pulseView = new WeakReference<>(view);
+        }
 
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
+            HeartRatePulseView view = pulseView.get();
+
             switch (msg.what) {
                 case MSG_SHOW_PULSE:
-                    mIndexShowing++;
-                    showPulse();
+                    view.mIndexShowing++;
+                    view.showPulse();
                     break;
 
                 case MSG_HIDE_PULSE:
-                    mIndexHiding++;
-                    hidePulse();
+                    view.mIndexHiding++;
+                    view.hidePulse();
                     break;
             }
         }
