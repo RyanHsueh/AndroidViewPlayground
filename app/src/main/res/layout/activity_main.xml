@@ -37,5 +37,11 @@
         android:textAllCaps="false"
         android:text="HeartRatePulseActivity"
         android:onClick="startHeartRatePulseActivity" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="BarChartActivity"
+        android:onClick="startBarChartActivity" />
 
 </LinearLayout>

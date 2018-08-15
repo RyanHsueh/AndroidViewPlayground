@@ -14,4 +14,9 @@
         <attr name="themeColor" format="color"/>
     </declare-styleable>
 
+    <declare-styleable name="BaseChartView">
+        <attr name="mainColor" format="color" />
+        <attr name="backgroundColor" format="color" />
+    </declare-styleable>
+
 </resources>

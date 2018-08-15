@@ -1,3 +1,40 @@
 <resources>
     <string name="app_name">AndroidViewPlayground</string>
+
+    <string name="am">am</string>
+    <string name="pm">pm</string>
+    <string name="SUN">SUN</string>
+    <string name="MON">MON</string>
+    <string name="TUE">TUE</string>
+    <string name="WED">WED</string>
+    <string name="THU">THU</string>
+    <string name="FRI">FRI</string>
+    <string name="SAT">SAT</string>
+    <string name="january_short">Jan</string>
+    <string name="february_short">Feb</string>
+    <string name="march_short">Mar</string>
+    <string name="april_short">Apr</string>
+    <string name="may_short">May</string>
+    <string name="june_short">Jun</string>
+    <string name="july_short">Jul</string>
+    <string name="august_short">Aug</string>
+    <string name="september_short">Sep</string>
+    <string name="october_short">Oct</string>
+    <string name="november_short">Nov</string>
+    <string name="december_short">Dec</string>
+
+    <string name="date_format_option_mdy">"MM/DD/YY"</string>
+    <string name="date_format_option_dmy">"DD/MM/YY"</string>
+    <string name="time_format_12hr">"12 HR"</string>
+    <string name="time_format_24hr">"24 HR"</string>
+    <string name="date_format_ymd">yyyy-MM-dd</string>
+    <string name="date_format_dmy">d MMM yyyy</string>
+    <string name="date_format_dm">d MMM</string>
+    <string name="date_format_my">MMM yyyy</string>
+    <string name="date_format_y">yyyy</string>
+    <string name="date_format_hma">hh:mm a</string>
+    <string name="date_format_hmsa">hh:mm:ss a</string>
+    <string name="date_format_hms_24">HH:mm:ss</string>
+    <string name="date_format_ymd_hms_24">"d MMM, yyyy - HH:mm:ss"</string>
+    <string name="date_format_ymd_hms_12">"d MMM, yyyy - hh:mm:ss a"</string>
 </resources>

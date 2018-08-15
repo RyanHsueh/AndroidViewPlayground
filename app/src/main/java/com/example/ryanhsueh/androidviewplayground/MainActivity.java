@@ -33,5 +33,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HeartRatePulseActivity.class);
         startActivity(intent);
     }
+    public void startBarChartActivity(View view) {
+        Intent intent = new Intent(this, BarChartActivity.class);
+        startActivity(intent);
+    }
 
 }

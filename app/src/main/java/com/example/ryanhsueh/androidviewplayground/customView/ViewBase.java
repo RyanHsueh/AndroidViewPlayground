@@ -28,10 +28,6 @@ public abstract class ViewBase extends View {
         mContext = context;
     }
 
-    public final <E extends View> E findView(int id) {
-        return (E) findViewById(id);
-    }
-
     // force the derived class, to implement the resource releasing function, when it is detached
 
     protected abstract void releaseResource();

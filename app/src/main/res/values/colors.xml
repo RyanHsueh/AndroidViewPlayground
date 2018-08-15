@@ -3,4 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="app_grey_blue">#b2c9df</color>
+    <color name="bar_default_grey">#738ca5</color>
+    <color name="grey_75">#757575</color>
+
+    <color name="chart_view_yellow">#f8b81d</color>
+
+    <color name="black">#000</color>
+    <color name="white">#FFF</color>
 </resources>
