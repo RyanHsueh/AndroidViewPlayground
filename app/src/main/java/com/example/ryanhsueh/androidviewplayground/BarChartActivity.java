@@ -1,8 +1,9 @@
 package com.example.ryanhsueh.androidviewplayground;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ryanhsueh.androidviewplayground.chartView.BaseChartView;
 import com.example.ryanhsueh.androidviewplayground.chartView.ChartTimeUnit;

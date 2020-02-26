@@ -1,8 +1,9 @@
 package com.example.ryanhsueh.androidviewplayground;
 
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ryanhsueh.androidviewplayground.customView.ITitleBarAction;
 import com.example.ryanhsueh.androidviewplayground.customView.MyTitleBar;

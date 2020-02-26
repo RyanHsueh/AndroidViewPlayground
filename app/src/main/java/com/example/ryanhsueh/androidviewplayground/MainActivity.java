@@ -1,9 +1,10 @@
 package com.example.ryanhsueh.androidviewplayground;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void startPulseAnimationActivity(View view) {
         Intent intent = new Intent(this, PulseAnimationActivity.class);
+        startActivity(intent);
+    }
+    public void startSpringAnimActivity(View view) {
+        Intent intent = new Intent(this, SpringAnimActivity.class);
         startActivity(intent);
     }
     public void startRectViewActivity(View view) {

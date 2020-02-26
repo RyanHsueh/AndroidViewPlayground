@@ -9,9 +9,9 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import android.graphics.Color
-import android.support.v4.view.animation.LinearOutSlowInInterpolator
 import android.view.MotionEvent
 import android.view.animation.LinearInterpolator
+import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
 
 
 class PulseAnimationView: View {
