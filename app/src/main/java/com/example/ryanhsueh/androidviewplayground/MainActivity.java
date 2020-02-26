@@ -17,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SlideViewActivity.class);
         startActivity(intent);
     }
+    public void startPulseAnimationActivity(View view) {
+        Intent intent = new Intent(this, PulseAnimationActivity.class);
+        startActivity(intent);
+    }
     public void startRectViewActivity(View view) {
         Intent intent = new Intent(this, RectViewActivity.class);
         startActivity(intent);
