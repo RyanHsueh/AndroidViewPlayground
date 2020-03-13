@@ -61,7 +61,7 @@ public class SlideViewActivity extends AppCompatActivity {
         ObjectAnimator animator2 = ObjectAnimator.ofFloat(view, "translationY", 0.0f, -500.0f);
         ObjectAnimator animator3 = ObjectAnimator.ofFloat(view, "scaleX", 0.5f, 2.0f);
         ObjectAnimator animator4 = ObjectAnimator.ofFloat(view, "scaleY", 0.5f, 2.0f);
-        ObjectAnimator animator5 = ObjectAnimator.ofFloat(view, "rotationY", 0.0f, 90.0f, 0f);
+        ObjectAnimator animator5 = ObjectAnimator.ofFloat(view, "rotation", 0.0f, 360.0f);
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.setDuration(300);
         animatorSet.play(animator1).with(animator2).with(animator3).with(animator4).before(animator5);

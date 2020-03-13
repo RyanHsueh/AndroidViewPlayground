@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidViewPlayground.iml" filepath="$PROJECT_DIR$/AndroidViewPlayground.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/AndroidViewPlayground-app.iml" filepath="$PROJECT_DIR$/app/AndroidViewPlayground-app.iml" group="AndroidViewPlayground/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ryan-AndroidViewPlayground.iml" filepath="$PROJECT_DIR$/ryan-AndroidViewPlayground.iml" group="AndroidViewPlayground" />
     </modules>
   </component>
 </project>
